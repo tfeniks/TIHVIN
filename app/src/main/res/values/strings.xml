@@ -4,8 +4,11 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Настройки</string>
     <string name="icon">Тихвинская Божья матерь</string>
+    <string name="iconograf">Иконография</string>
+    <string name="mol">Молитвы</string>
+    <string name="hram">Храм</string>
 
     <string name="text">Одна из особо почитаемых на Руси святынь. Считается, что этот образ был создан святым евангелистом Лукой при жизни Пресвятой Богородицы. До XIV века икона находилась в Константинополе, пока в 1383 году неожиданно не исчезла из Влахернского храма. Согласно летописи, в этом же году на Руси икона явилась перед рыбаками на Ладожском озере близ города Тихвина.
 
