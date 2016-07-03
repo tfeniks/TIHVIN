@@ -25,5 +25,9 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.0.0'
     compile 'com.android.support:design:24.0.0'
     compile 'com.cesarferreira.catkit:catkit:0.3.0'
+    compile 'com.loopeer.library:cardstack:1.0.1'
+    compile 'com.fmsirvent:parallaxeverywhere:1.0.4'
+    compile 'com.github.habibi07:ImgEffects:1.0.4'
+    compile 'com.yarolegovich:lovely-dialog:1.0.4'
 
 }
