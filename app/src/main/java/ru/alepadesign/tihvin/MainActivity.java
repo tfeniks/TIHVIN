@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,11 +16,27 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.yarolegovich.lovelydialog.LovelySaveStateHandler;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private LinearLayout linearLayout;
+    private GridView gvExample;
+    private TextView tvExample;
+    private ImageView ivExample;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +44,16 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        gvExample = (GridView) findViewById(R.id.gridView);
+        tvExample = (TextView) findViewById(R.id.textView);
+        ivExample = (ImageView) findViewById(R.id.imageView);
+        gvExample.setNumColumns(2);
+        gvExample.setVerticalSpacing(20);
+        gvExample.setHorizontalSpacing(20);
+
+        gvExample.setAdapter(new Adapter(this));
+
         //saveStateHandler = new LovelySaveStateHandler();
 
         //findViewById(R.id.nav_exit).setOnClickListener(this);
@@ -99,7 +126,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_hram) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_hram) {
 
         } else if (id == R.id.nav_exit) {
             exitDialog();
@@ -130,4 +157,7 @@ public class MainActivity extends AppCompatActivity
                 })
                 .show();
     }
+
+
 }
+
