@@ -13,9 +13,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-/**
- * Created by OneXeor on 04.07.2016.
- */
+
 public class Adapter extends BaseAdapter {
 
     private Context context;
@@ -50,7 +48,7 @@ public class Adapter extends BaseAdapter {
         if (convertView == null) {
             grid = new View(context);
             LayoutInflater inflater = (LayoutInflater) context.getSystemService( Context.LAYOUT_INFLATER_SERVICE );
-            grid = inflater.inflate(R.layout.iconograf, parent, false);
+            grid = inflater.inflate(R.layout.item_grid_view, parent, false);
         } else {
             grid = (View) convertView;
         }

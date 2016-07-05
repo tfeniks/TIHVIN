@@ -1,12 +1,14 @@
 package ru.alepadesign.tihvin;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,18 +18,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import com.yarolegovich.lovelydialog.LovelySaveStateHandler;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -45,14 +39,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        gvExample = (GridView) findViewById(R.id.gridView);
-        tvExample = (TextView) findViewById(R.id.textView);
-        ivExample = (ImageView) findViewById(R.id.imageView);
-        gvExample.setNumColumns(2);
-        gvExample.setVerticalSpacing(20);
-        gvExample.setHorizontalSpacing(20);
-
-        gvExample.setAdapter(new Adapter(this));
 
         //saveStateHandler = new LovelySaveStateHandler();
 
@@ -83,8 +69,17 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            exitDialog();
+           // super.onBackPressed();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Fragment fragment = new Iconics();
+        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.fl_content_main, fragment).commit();
     }
 
     @Override
@@ -96,9 +91,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -116,12 +109,17 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_icon) {
-            // Handle the camera action
-            Intent intent = new Intent(this, iconics.class);
-            startActivity(intent);
+            Fragment fragment = new Iconics();
+            android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.fl_content_main, fragment).commit();
+        }else if (id == R.id.nav_iconografy){
+            Fragment fragment = new IconografFragment();
+            android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.fl_content_main, fragment).commit();
         } else if (id == R.id.nav_hram) {
-            Intent intent = new Intent(this, hram_cl.class);
-            startActivity(intent);
+            Fragment fragment = new HramCl();
+            android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.fl_content_main, fragment).commit();
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_hram) {
@@ -129,7 +127,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_hram) {
 
         } else if (id == R.id.nav_exit) {
-            exitDialog();
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

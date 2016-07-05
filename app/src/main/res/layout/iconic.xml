@@ -4,30 +4,41 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ru.alepadesign.tihvin.iconics">
+    tools:context=".Iconics">
+
+
+
 
     <ScrollView
         android:id="@+id/sv"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         >
-
-        <TextView
-            android:id="@+id/tvContent"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/text" />
+            android:layout_gravity="center_horizontal">
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="260dp"
+                android:id="@+id/imagefon"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center"
+
+                />
+            <TextView
+                android:id="@+id/tvContent"
+                android:layout_margin="13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text" />
+        </LinearLayout>
+
+
 
     </ScrollView>
 
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:scaleType="fitXY"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/embed_asset"
-        android:id="@+id/imagefon"
-        >
-    </ImageView>
+
 </LinearLayout>
